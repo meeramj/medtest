@@ -1,0 +1,54 @@
+{% extends 'afterlogin.html' %}
+{% load static %}
+
+{% block metadescription %}
+
+    {{product.desc|truncatewords:155 }}
+
+{% endblock %}
+
+{% block title %}
+  {% if category %}
+    {{product.name }} - MJ Medicals
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+<br>
+<div class="content_section" style="height:830px;">
+  <div class="row my_prod_row_class">
+    <div class="mx_auto">
+      <p style="color:yellow;"><a style="color:yellow;" href="{% url 'medtestapp:allProdCat' %}">Home</a> | <a style="color:yellow;" href="{{product.category.get_url}}">{{product.category}}</a>| {{product.name}} </p>
+    </div>
+  </div>
+  <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 ">
+        <div style="min-width:18rem">
+          <img src="{{product.img.url}}" alt="{{product.name}}" width="150px" height="160px" >
+        </div>
+      </div>
+
+      <div class="col-12 col-sm-12 col-md-12 col-lg-8">
+        <div>
+          <h2 style="font-size:30px; padding:0px; color:white;" class="my_prod_title">{{product.name}}</h2>
+          <h3 style="color:white;">Price : {{product.price}}</h3>
+          {% if product.stock <= 0 %}
+            <p style="font-size:14px;" class="text-justify my_prod_text"><b> Out of Stock</b></p>
+          {% else %}
+            <a class="btn btn-secondary" href="{% url 'medcart:add_cart' product.id %}">Add to Cart</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h2>Product Description</h2>
+  <p style="font-size:16px;line-height:22px;">{{product.desc}}</p>
+  <br>
+
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+
+
+
+    {% extends 'index.html' %}
+
+{% load static %}
+
+{% block metadescription %}
+    We have varieties of products available here...
+{% endblock %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block content %}
+    <div class="content_section" style="height:830px;">
+        <br>
+        <div class="row my_row_class">
+      <div>
+        <p style="font-size:20px;color:white" class=" my_search_text">You have searched for :<b>"{{query}}"</b></p>
+      </div>
+    </div><br><br>
+
+        <div class="container" style="background:#e1d1d6;border-radius: 1rem;width:750px; ">
+            <div class="row mx_auto">
+                {% for product in products %}
+                    <div class="my_bottom_margin col-4 col-sm-12 col-md-4 col-lg-4">
+                        <div class="card text-center" style="min-width:15rem;background:#e1d1d6;border-radius: 2rem; border-color: grey;border-width:2px;">
+                            <a href="{{product.get_url}}"><img class="card-img-top my_image" src="{{product.img.url}}" alt="{{product.name}}" style="background:#e1d1d6;mix-blend-mode:multiply; height:120px;width:120px;"></a>
+                            <div class="card-body" style="height:120px;">
+                                <h4 style="font-size:13px;height:50px;">{{product.name}}</h4>
+                                <p class="price">{{product.price}}</p>
+
+                            </div>
+                        </div><br>
+                    </div>
+                {% empty %}
+                    <div class="row mx_auto">
+                        <p class="text-center my_search_text"> 0 results found</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,125 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block content %}
+<br>
+<div class="content_section" style="height:800px; width:760px;">
+    <div class="card">
+  <section class="background-radial-gradient overflow-hidden" style="border-radius: 2rem;">
+    <div class="container px-0 py-5 px-md-6 text-center text-lg-start my-5">
+        <div class="row gx-lg-1 align-items-center mb-5">
+            <div class="col-lg-6  mb-5 mb-lg-0" style="z-index: 10;padding-left:15px;">
+               <center> <h1 class="my-5 display-5 fw-bold ls-tight" style="color: hsl(218, 81%, 95%) ">
+                    Welcome to <br>
+                    <span style="color: hsl(218, 81%, 75%)">MJ Medicals</span>
+                </h1>
+                <p class="mb-4 opacity-70" style="color: hsl(218, 81%, 85%); font-size:15px;">
+                    Sign Up with us and get exclusive<br> Discounts & Savings on Medicines.<br>
+                    Get express delivery in 2hrs.*
+                </p></center>
+                <br>
+                <center> <img src="{% static 'images/image_01.jpg' %}" style="height:200px; width:260px";/></center>
+            </div><!-- end of col-lg-6 -->
+            <div class="col lg-6 mb-5 mb-lg-0 position-relative" style="padding-right:12px;">
+                <div id="radius-shape-1" class="position-absolute rounded-circle shadow-5-strong"></div>
+                <div id="radius-shape-2" class="position-absolute shadow-5-strong"></div>
+
+                <div class="card bg-glass" style="border-radius: 2rem;" >
+                    <div class="card-body px-4 py-5 px-md-5">
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row">
+                                <div class="col-md-6 mb-4" style="padding-left:0px;">
+                                    <div class="form-outline">
+                                        <input type="text" id="form3Example1" class="form-control" name="first_name" placeholder="First name" />
+
+                                    </div><!-- end of form-outline -->
+                                </div><!-- end of col-md-6 mb-4 --><br>
+                                <div class="col-md-6 mb-4" style="padding-right:0px;">
+                                    <div class="form-outline" >
+                                        <input type="text" id="form3Example2" class="form-control" name="last_name" placeholder="Last name" />
+                                    </div><!-- end of form-outline -->
+                                </div><!-- end of col-md-6 mb-4 -->
+                            </div><!-- end of row -->
+
+                            <!-- Username input -->
+                            <div class="form-outline mb-4" style="padding-right:0px;">
+                                <input type="text" id="form3Example3" class="form-control" name="username" placeholder="Username"/>
+                            </div>
+
+                            <!-- Email input -->
+                            <div class="form-outline mb-4">
+                                <input type="email" id="form3Example4" class="form-control" name="email" placeholder="Email ID" />
+                            </div>
+
+                            <!-- Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form3Example5" class="form-control" name="password" placeholder="Enter your password"/>
+                            </div>
+
+                            <!-- Confirm Password input -->
+                            <div class="form-outline mb-4">
+                                <input type="password" id="form3Example6" class="form-control" name="cpassword" placeholder="Confirm Password " />
+                            </div>
+
+                            <!-- Checkbox -->
+                            <div class="form-check d-flex justify-content-center mb-4">
+                                <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
+                                <label class="form-check-label" for="form2Example33">
+                                    Subscribe to our newsletter
+                                </label>
+                            </div>
+
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4">
+                                Submit
+                            </button>
+
+                            <!-- Register buttons -->
+                            <div class="text-center">
+                                <p>or sign up with:</p>
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <a style="color:#0d6efd;" href="https://www.facebook.com/"> <i class="fab fa-facebook-f"></i></a>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <a style="color:#0d6efd;" href="https://www.google.com/"><i class="fab fa-google"></i></a>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <a style="color:#0d6efd;" href="https://www.twitter.com/"><i class="fab fa-twitter"></i></a>
+                                </button>
+
+                                <button type="button" class="btn btn-link btn-floating mx-1">
+                                    <i class="fab fa-github"></i>
+                                </button>
+                            </div><!-- end of text-center -->
+                        </form>
+                    </div><!-- end of card-body px-4 py-5 px-md-5 -->
+                </div><!-- end of card bg-glass -->
+                    </div>
+            </div><!-- end of col-lg-6 -->
+        </div><!-- end of row -->
+    </div><!-- end of container -->
+  </section>
+</div>
+</div><!-- end of content_section -->
+{% endblock %}
+
+
+<form action="" method="post">
+    {% csrf_token %}
+    <input type="text" name="username" placeholder="Enter your username"><br>
+    <input type="text" name="first_name" placeholder="Enter your first name"><br>
+    <input type="text" name="last_name" placeholder="Enter your last name"><br>
+    <input type="email" name="email" placeholder="Enter your email id"><br>
+    <input type="password" name="password" placeholder="Enter your password"><br>
+    <input type="password" name="cpassword" placeholder="Enter the password again"><br>
+    <input type="submit">
+</form>
+{% for msg in messages %}
+{{msg}}
+{% endfor %}
+
+

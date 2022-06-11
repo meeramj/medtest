@@ -1,0 +1,88 @@
+
+{% extends 'afterlogin.html' %}
+{% load static %}
+
+{% block title %}
+  {% if category %}
+    {{category.name }} - MJ Store
+  {% else %}
+    MJ Medicals - an online medical store
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div id="latest_product_gallery">
+
+  <h2>Featured Products</h2>
+
+  <div id="SlideItMoo_outer">
+    <div id="SlideItMoo_inner">
+      <div id="SlideItMoo_items">
+        {% for cat in links %}
+          <div class="SlideItMoo_element">
+            <a href="{{cat.get_url}}"><img src="{{cat.img.url}}" alt="product 1" style="width:100px;height:100px;border-radius: 1rem;"/></a>
+            {{cat.name}}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</div> <!-- end of latest_content_gallery -->
+
+<div class="content_section" style="height:630px; width:760px;">
+  <div class="mx_auto">
+    {% if category %}
+      <div class="row " style="border-radius: 2rem;">
+        <div class="col-2">
+          <img class="my_image_padding" src="{{category.img.url}}" alt="{{category.name}}" style="height:120px;width:120px;border-radius: 2rem 0 0 2rem; ">
+        </div>
+        <div class="col-10" >
+          <h2  class="my_title" style="padding-top:45px;">{{category.name}}</h2>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+
+  <div class="card" style="background-color: lightslategray;height:500px; border-radius: 1rem; ">
+    <div class="row mx_auto">
+      {% for product in products.object_list %}
+        <div class="my_bottom_margin col-4 col-sm-12 col-md-4 col-lg-4" >
+          <div class="card text-center" style="background-color: lightgoldenrodyellow;border-color: grey;border-width:2px;border-radius: 2rem;" >
+            <a href="">
+              <img class="card-img-top my_image" src="{{product.img.url}}" alt="{{product.name}}" style="mix-blend-mode:multiply; height:120px;width:120px; ">
+            </a>
+            <div class="card-body " style="height:130px; ">
+              <h4 style="font-size:13px;height:50px;" >{{product.name}}</h4>
+              <p class="price">{{product.price}}</p>
+              <p ><a href="{{product.get_url}}" >Detail</a> |<a href="/meduser/login">Buy Now</a></p>
+            </div>
+          </div><br>
+        </div>
+      {% endfor %}
+    </div>
+
+
+     {% if products.paginator.num_pages > 1 %}
+
+
+      <div class="text-center">
+        {% for pg in products.paginator.page_range %}
+          <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}" style="font-size:13px;">{{pg}}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+
+    <br>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+
+
+
+

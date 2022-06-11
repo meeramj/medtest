@@ -1,0 +1,38 @@
+{% load static %}
+<header>
+    <div id="templatemo_menu">
+        <ul>
+            {% if user.is_authenticated %}
+     	        <li><a href="" target="_parent">Hello, {{user.first_name}}</a></li>
+		        <li><a href="/meduser/logout" class="current">Logout</a></li>
+            {% endif %}
+            <li ><a href="" target="_parent" style="padding-left:2px;">Appointments</a></li>
+            <li><a href="{% url 'medpurchase:medicine' %}">Purchase</a></li>
+            <li><a href="">Lab Tests</a></li>
+            <li><a href="">Health Records</a></li>
+
+        </ul>
+    </div> <!-- end of templatemo_menu -->
+
+  <div id="templatemo_header_bar">
+
+    <div id="header"><div class="right"></div>
+
+        <h1><a href="{% url 'medtestapp:allProdCat' %}" target="_parent">
+            <img src="{% static 'images/templatemo_logo.png' %}" alt="MJ Medicals" />
+            <span>Online Medical Shop</span>
+            </a>
+        </h1>
+    </div>
+
+    <div id="search_box">
+        <form class="d-flex" action="{% url 'medsearch:SearchResult' %}" method="get">
+            {% csrf_token %}
+            <input type="text" value="Enter keyword here..." name="q" size="10" id="searchfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />
+            <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" />
+        </form>
+    </div>
+
+  </div> <!-- end of templatemo_header_bar -->
+
+</header>

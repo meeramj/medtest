@@ -1,0 +1,57 @@
+{% load static %}
+<header>
+  <div id="templatemo_menu">
+        <ul>
+            <li><a href="{% url 'medtestapp:page' %}" class="current">Home</a></li>
+            <li><a href="" target="_parent">About Us</a></li>
+            <li>
+                <div class="dropdown" data-bs-toggle="dropdown">
+                    <a >Products</a>
+                    <div class="dropdown-content" >
+                        {% for cat in links %}
+                            <a href="{{cat.get_url}}">{{cat.name}}</a>
+                        {% endfor %}
+                    </div><!--end of dropdown-content -->
+                </div><!--end of dropdown -->
+            </li>
+            <li>
+                <div class="dropdown">
+                    <a >Branches</a>
+                        <div class="dropdown-content">
+                            {% for bar in blinks %}
+                            <a href="https://en.wikipedia.org/wiki/{{bar.name}}">{{bar.name}}</a>
+                            {% endfor %}
+                        </div>
+                </div>
+            </li>
+            <li><a href="/meduser/login" target="_parent">Login</a></li>
+            <li><a href="{% url 'meduser:register' %}" target="_parent">Register</a></li>
+        </ul>
+
+
+
+  </div> <!-- end of templatemo_menu -->
+
+  <div id="templatemo_header_bar">
+
+    <div id="header"><div class="right"></div>
+
+        <h1><a href="{% url 'medtestapp:page' %}" target="_parent">
+<!--            <img src="{% static 'images/templatemo_logo.png' %}" alt="MJ Medicals" />-->
+            <span style="font-family:Brush Script MT; color:red;font-size:50px;">MJ Medicals</span>
+            <span>Online Medical Shop</span>
+            </a>
+        </h1>
+    </div>
+
+    <div id="search_box">
+        <form class="d-flex" action="{% url 'medsearch:SearchResult' %}" method="get">
+            {% csrf_token %}
+            <input type="text" value="Enter keyword here..." name="q" size="10" id="searchfield" title="searchfield" onfocus="clearText(this)" onblur="clearText(this)" />
+            <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" />
+        </form>
+    </div>
+
+  </div> <!-- end of templatemo_header_bar -->
+
+</header>

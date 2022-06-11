@@ -1,0 +1,125 @@
+{% extends 'afterlogin.html' %}
+{% load static %}
+{% block content %}
+<div class="content_section" style="height:830px; width:760px;">
+  <br>
+    <!-- Section: Design Block -->
+    <section class="text-center">
+        <!-- Background image -->
+        <div class="p-5 bg-image" style="
+        background-image: url('{% static 'images/purchase.jpg' %}');
+        height: 300px;
+        "></div>
+        <!-- Background image -->
+
+        <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+        margin-top: -210px;
+        background: hsla(0, 0%, 100%, 0.8);
+        backdrop-filter: blur(30px);
+        height:740px;
+        ">
+            <div class="card-body py-5 px-md-5">
+
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-10">
+                        <h2 class="fw-bold mb-5">Place your order</h2>
+                        <form action="" method="post">
+                            {% csrf_token %}
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example1" class="form-control" placeholder="First name" name="firstname" required/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <input type="text" id="form6Example2" class="form-control" placeholder="Last name" name="lastname" required />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-outline mb-4">
+                                    <input type="text" id="form6Example3" class="form-control" name="username" placeholder="Username" required/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                    <input type="number" id="form6Example4" class="form-control" placeholder="Phone number" name="phone" required />
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                    <input type="email" id="form6Example5" class="form-control" name="email" placeholder="Email id" required />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Address line 1  input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" class="form-control" id="form6Example6" placeholder="Address line 1" required />
+                            </div>
+
+                            <!-- Address line 2  input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" class="form-control" id="form6Example7" placeholder="Address line 2" required />
+                            </div>
+                                <!-- District -->
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <select id="inputDistrict" class="form-control" name="dist" aria-label="Default select example" onfocus='this.size=4;'onblur='this.size=1;'  onchange= 'this.size=1; this.blur();' >
+                                            <option value="" selected>Select your District</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <!-- Area -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+                                        <select id="inputArea" class="form-control" name="area" aria-label="Default select example" onfocus='this.size=4;'onblur='this.size=1;'onchange='this.size=1; this.blur();'>
+                                            <option value=""  selected>Select your Area</option>
+                                        </select>
+
+                                       <script language="javascript" type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--Medicine -->
+                            <div class="form-outline mb-4">
+                                <select required id="inputmed" class="form-control" name="med" aria-label="Default select example" onfocus='this.size=4;'onblur='this.size=1;'onchange='this.size=1; this.blur();'>
+
+                                    <option selected>Select the medicine</option>
+                                    {% for par in plinks %}
+                                        <option value="{{par.name}}">{{par.name}}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div class="form-outline">
+
+                                        <input type="number" id="form6Example8" placeholder="Quantity" class="form-control" name="quan" required/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit button -->
+                            <input class="btn btn-primary btn-block mb-4" type="submit">
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Section: Design Block -->
+<br>
+</div>
+{% endblock %}
